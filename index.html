@@ -2,9 +2,152 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Test</title>
+	<title>Ваш знак зодиака и ваш возраст!</title>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			background-color:#619B8A;
+		}
+		.wrapper{
+			width:100%;
+		}
+		.container{
+			margin: 100px auto;
+			width:600px;
+		}
+
+		input[type="text"]{
+			width:115px;
+			border: 2px solid #FE7F2D;
+    		height: 35px;
+    		margin: 0px 10px;
+    		padding: 0px 0px 0px 10px;
+    		background-color: #fff;
+    		color: #000;
+            font-weight: bold;
+            font-size: 16px;
+		}
+
+		.container button{
+			border: 1px solid green;
+    		background-color: green;
+    		padding: 11px 15px;
+    		color: #fff;
+    		text-transform: uppercase;
+    		font-weight: bold;
+    		cursor:pointer;
+		}
+
+		.ry, .rz{
+			text-transform: uppercase;
+    		font-weight: bold;
+    		margin: 20px 0 0 8px;
+		}
+
+		.ry span, .rz span{
+			text-decoration: underline;
+		}
+	</style>
 </head>
 <body>
-	<p>hello test</p>
+	<div class="wrapper">
+	<div class="container">
+	<h1>Узнай свой знак зодиака и свой возраст</h1>
+		<input type="text" id="date" name="date" placeholder="date of birth" maxlength="2">
+		<input type="text" id="month" name="month" value="" placeholder="month of birth" maxlength="2">
+		<input type="text" id="year" name="year" value="" placeholder="year of birth" maxlength="4">
+		<button type="submit" onclick="multipl()">Узнать...</button>
+		<div class="ry">
+			Ваш возраст:
+			<span id="result-year"></span>
+		</div>
+		<div class="rz">
+			Ваш знак зодиака:
+			<span id="result-zodiac"></span>
+		</div>
+	</div>
+	</div>
+	<script type="text/javascript">
+
+		function multipl(){
+			// variables
+			var currentTime = new Date();
+			var currentYear = currentTime.getFullYear();
+			var currentMonth = currentTime.getMonth();
+			var currentDay = currentTime.getDay();
+		    var day = document.getElementById('date').value;
+		    var month = document.getElementById('month').value;
+		    var year = document.getElementById('year').value;
+
+		    // calculating your age
+		    function yearCount(){
+				if(currentMonth <= month && currentDay <= day){
+					return (currentYear - year) - 1;
+				}else{
+					return currentYear - year;
+				}
+		    }
+			
+			function rightYear(){
+				var x = yearCount();	
+				if( x == 5 || x == 6 || x == 7 || x == 8 || x == 9 || x == 10 || x == 11 || x == 12 
+					|| x == 13 || x ==14 || x == 15 || x == 16 || x == 17 || x == 18 || x == 19 || x == 20 
+					|| x == 25 || x ==26 || x == 27 || x == 28 || x == 29 || x == 30 || x == 35 || x == 36 
+					|| x == 37 || x ==38 || x == 39 || x == 40 || x == 45 || x == 46 || x == 47 || x == 48 
+					|| x == 49 || x ==50 || x == 55 || x == 56 || x == 57 || x == 58 || x == 59 || x == 60 
+					|| x == 65 || x ==66 || x == 67 || x == 68 || x == 69 || x == 70 || x == 75 || x == 76
+					|| x == 77 || x ==78 || x == 79 || x == 80 || x == 85 || x == 86 || x == 87 || x == 88
+					|| x == 89 || x ==90 || x == 95 || x == 96 || x == 97 || x == 98 || x == 99 || x == 100 
+					|| x == 105 || x ==106 || x == 107){
+					return "лет";
+				}else if(x == 1 || x == 21 || x == 31 || x == 41 || x == 51 || x == 61 || x == 71 || x == 81 || x == 91 || x == 101){
+					return "год";
+				}else{
+					return "года"
+				}
+			}
+		    // zodiacs
+			function zodiac(){
+				      if((22 <= day && day <= 31 && month == 12) || (19 >= day && day >= 1 && month == 1)){
+					return "Козерог";
+				}else if((20 <= day && day <= 31 && month == 1) || (19 >= day && day >= 1 && month == 2)){
+					return "Водолей";
+				}else if((20 <= day && day <= 29 && month == 2) || (20 >= day && day >= 1 && month == 3)){
+					return "Рыбы";
+				}else if((21 <= day && day <= 31 && month == 3) || (20 >= day && day >= 1 && month == 4)){
+					return "Овен";
+				}else if((21 <= day && day <= 30 && month == 4) || (21 >= day && day >= 1 && month == 5)){
+					return "Телец";
+				}else if((22 <= day && day <= 31 && month == 5) || (21 >= day && day >= 1 && month == 6)){
+					return "Близнецы";
+				}else if((22 <= day && day <= 30 && month == 6) || (22 >= day && day >= 1 && month == 7)){
+					return "Рак";
+				}else if((23 <= day && day <= 31 && month == 7) || (23 >= day && day >= 1 && month == 8)){
+					return "Лев";
+				}else if((24 <= day && day <= 31 && month == 8) || (23 >= day && day >= 1 && month == 9)){
+					return "Дева";
+				}else if((24 <= day && day <= 30 && month == 9) || (22 >= day && day >= 1 && month == 10)){
+					return "Весы";
+				}else if((23 <= day && day <= 31 && month == 10) || (22 >= day && day >= 1 && month == 11)){
+					return "Скорпион";
+				}else if((23 <= day && day <= 30 && month == 11) || (21 >= day && day >= 1 && month == 12)){
+					return "Стрелец";
+				}else{
+					return false;
+				}
+			}
+			
+			// show the results
+			document.getElementById('result-year').innerHTML = yearCount() + " " + rightYear();	
+			document.getElementById('result-zodiac').innerHTML = zodiac() + "!";
+		}
+
+</script>
 </body>
 </html>
+
+
+
+
+
